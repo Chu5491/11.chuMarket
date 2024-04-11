@@ -11,7 +11,7 @@
 %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 	<!-- Header -->
@@ -279,51 +279,55 @@
 						</tr>
 					</table>
 					<h3 class="title">판매중인 상품</h3>
-					
 					<div class="articleList" style="align:center;">
 						<div class="columns">
-							<c:forEach var="prod" items="${list}" >
-								<div class="column is-4">	
-									<div class="card" style="cursor: pointer;">		
-										<div class="card-image">			
-											<figure class="image is-4by3">				
-												<img src="/images/uploadFiles/${prod.upload.logiName}" alt="Placeholder image">			
-											</figure>		
-										</div>		
-										<div class="card-content" style="height:200px">			
-											<div class="media">				
-												<div class="media-content" id="${prod.prodStock}">					
-													<p class="title is-4 ct_list_pop" name="prod" id="${prod.prodNo}">${prod.prodName}</p>					
-													<p class="subtitle is-9 ct_list_pop" style="z-index:1;" name="market" id="${prod.market.marketNo}">@${prod.market.marketName}</p>				
-												</div>			
-											</div>			
-											<div class="content">
-												${prod.prodDetail }				
-												<br>		
-												<c:if test="${prod.prodStock <= 0}">
-													재고없음
-												</c:if>
-												<c:if test="${prod.prodStock > 0}">
-													<c:if test="${menu != 'manage' || menu != 'bsns'}">
-														<c:if test="${prod.prodStock <= 5}">
-															<b style="color:red;">품절임박</b>
-														</c:if>
-														<c:if test="${prod.prodStock > 5}">
-															<b style="color:green;">판매중</b>
-														</c:if>
-													</c:if>
-													<c:if test="${menu == 'manage' || menu == 'bsns'}">
-														<br>
-														재고 : ${prod.prodStock} 개 남음
-													</c:if>
-												</c:if>				
-												<br>				
-												<time datetime="${prod.regDate}">${prod.regDate}</time>			
+							<c:if test="${fn:length(list) == 0}">
+								<h3 class="subtitle" style="text-align:center; width:100%; color:red;">등록된 상품이 없습니다!</h3>
+							</c:if>
+							<c:if test="${fn:length(list) != 0}">
+								<c:forEach var="prod" items="${list}" >
+									<div class="column is-4">	
+										<div class="card" style="cursor: pointer;">		
+											<div class="card-image">			
+												<figure class="image is-4by3">				
+													<img src="/images/uploadFiles/${prod.upload.logiName}" alt="Placeholder image">			
+												</figure>		
 											</div>		
-										</div>	
+											<div class="card-content" style="height:200px">			
+												<div class="media">				
+													<div class="media-content" id="${prod.prodStock}">					
+														<p class="title is-4 ct_list_pop" name="prod" id="${prod.prodNo}">${prod.prodName}</p>					
+														<p class="subtitle is-9 ct_list_pop" style="z-index:1;" name="market" id="${prod.market.marketNo}">@${prod.market.marketName}</p>				
+													</div>			
+												</div>			
+												<div class="content">
+													${prod.prodDetail }				
+													<br>		
+													<c:if test="${prod.prodStock <= 0}">
+														재고없음
+													</c:if>
+													<c:if test="${prod.prodStock > 0}">
+														<c:if test="${menu != 'manage' || menu != 'bsns'}">
+															<c:if test="${prod.prodStock <= 5}">
+																<b style="color:red;">품절임박</b>
+															</c:if>
+															<c:if test="${prod.prodStock > 5}">
+																<b style="color:green;">판매중</b>
+															</c:if>
+														</c:if>
+														<c:if test="${menu == 'manage' || menu == 'bsns'}">
+															<br>
+															재고 : ${prod.prodStock} 개 남음
+														</c:if>
+													</c:if>				
+													<br>				
+													<time datetime="${prod.regDate}">${prod.regDate}</time>			
+												</div>		
+											</div>	
+										</div>
 									</div>
-								</div>
-							</c:forEach>
+								</c:forEach>
+							</c:if>
 						</div>
 					</div>
 					

@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.Market;
 import com.model2.mvc.service.domain.User;
+import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.user.UserService;
 
 //==> 회원관리 Controller
@@ -29,6 +31,10 @@ public class UserController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
+	
+	@Autowired
+	@Qualifier("marketServiceImpl")
+	private MarketService marketService;
 	//setter Method 구현 않음
 	
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml 참조 할것
@@ -109,7 +115,6 @@ public class UserController
 			session.setAttribute("userInfo", user);
 		}
 		
-		//return "redirect:/getUser.do?userId="+user.getUserId();
 		return "redirect:/user/getUser?userId="+user.getUserId();
 	}
 	
@@ -130,6 +135,11 @@ public class UserController
 		User dbUser=userService.getUser(user.getUserId());
 		
 		if( user.getPassword().equals(dbUser.getPassword())){
+			if(dbUser.getRole().equals("bsns"))
+			{
+				Market market = marketService.getMarket(dbUser.getUserId());
+				session.setAttribute("bsnsMarket", market);
+			}
 			session.setAttribute("userInfo", dbUser);
 		}
 		

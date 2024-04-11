@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.Market;
 import com.model2.mvc.service.domain.User;
+import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.user.UserService;
 
 
@@ -34,6 +36,10 @@ public class UserRestController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
+	
+	@Autowired
+	@Qualifier("marketServiceImpl")
+	private MarketService marketService;
 	//setter Method 구현 않음
 		
 	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml 참조 할것
@@ -69,7 +75,13 @@ public class UserRestController
 		//Business Logic
 		User dbUser=userService.getUser(user.getUserId());
 		
-		if( user.getPassword().equals(dbUser.getPassword())){
+		if( user.getPassword().equals(dbUser.getPassword()))
+		{
+			if(dbUser.getRole().equals("bsns"))
+			{
+				Market market = marketService.getMarket(dbUser.getUserId());
+				session.setAttribute("bsnsMarket", market);
+			}
 			session.setAttribute("userInfo", dbUser);
 		}
 		

@@ -19,7 +19,7 @@ public class User
 	private String phone1;
 	private String phone2;
 	private String phone3;
-	
+	private Market market;
 	///Constructor
 	public User()
 	{
@@ -142,6 +142,16 @@ public class User
 		this.regDate = regDate;
 	}
 	
+	public Market getMarket() 
+	{
+		return market;
+	}
+
+	public void setMarket(Market market) 
+	{
+		this.market = market;
+	}
+
 	@Override
 	public String toString() 
 	{

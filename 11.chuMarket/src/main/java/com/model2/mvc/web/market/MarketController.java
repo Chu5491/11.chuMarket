@@ -63,7 +63,7 @@ public class MarketController
 	int pageSize;
 	
 	@RequestMapping(value="addMarket",method = RequestMethod.GET)
-	public ModelAndView addMarket(@SessionAttribute("user") User user) throws Exception 
+	public ModelAndView addMarket(@SessionAttribute("userInfo") User user) throws Exception 
 	{
 		System.out.println("/market/addMarket :: GET");
 		

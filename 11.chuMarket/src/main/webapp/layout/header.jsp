@@ -30,8 +30,6 @@
 				/* ########################## Main ########################## */
 				$( ".Depth03:contains('Model2 MVC Shop')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('Model2 MVC Shop')" ) );
 			 		$(window.parent.document.location).attr("href","/");
 				}); 
 				/* ########################## Main ########################## */
@@ -40,22 +38,16 @@
 			 	/* ########################## login / logout ########################## */	
 			 	$( ".Depth03:contains('Log in')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('login')" ) );
 			 		$(document.location).attr("href","/user/loginView.jsp");
 				}); 
 				
 				$( ".Depth03:contains('Sign up')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('login')" ) );
 			 		$(document.location).attr("href","/user/addUser");
 				}); 
 				
 				$( ".Depth03:contains('LogOut')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('logout')" ) );
 			 		$(window.location).attr("href","/user/logout");
 				}); 
 			 	/* ########################## login / logout ########################## */	
@@ -68,20 +60,13 @@
 				/* ########################## History ########################## */	
 				
 				/* ########################## userInfo########################## */		 
-				//==> 개인정보조회 Event 연결처리부분
-				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			 	$( ".Depth03:contains('개인정보조회')" ).on("click" , function() 
 			 	{
 					$(window.location).attr("href","/user/getUser?userId=${userInfo.userId}");
 				});
 				
-				
-				//==> 회원정보조회 Event 연결처리부분
-				//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
 			 	$( ".Depth03:contains('회원정보조회')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('회원정보조회')" ) );
 			 		$(window.location).attr("href","/user/listUser");
 				}); 
 			 	/* ########################## userInfo ########################## */	
@@ -90,8 +75,6 @@
 
 			 	$( ".Depth03:contains('판매상품등록')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('판매상품등록')" ) );
 			 		$(window.location).attr("href","/product/addProductView.jsp");
 				}); 
 
@@ -100,15 +83,11 @@
 			 	{
 			 		$( ".Depth03:contains('판매상품관리')" ).on("click" , function() 
 			 		{
-						//Debug..
-						//alert(  $( ".Depth03:contains('판매상품관리')" ) );
-				 		$(window.location).attr("href","/product/listProduct?menu=bsns");
+				 		$(window.location).attr("href","/market/getMarket?marketNo=${bsnsMarket.marketNo}&menu=bsns");
 					}); 
 			 	}else
 			 	if(role == "admin")
 				$( ".Depth03:contains('판매상품관리')" ).on("click" , function() {
-					//Debug..
-					//alert(  $( ".Depth03:contains('판매상품관리')" ) );
 			 		$(window.location).attr("href","/product/listProduct?menu=manage");
 				}); 
 			 	
@@ -117,8 +96,6 @@
 			 	/* ########################## Purchase ########################## */	
 			 	$( ".Depth03:contains('구매이력조회')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('구매이력조회')" ) );
 			 		$(window.location).attr("href","/purchase/listPurchase");
 				}); 
 			 	/* ########################## Purchase ########################## */	
@@ -126,15 +103,11 @@
 			 	/* ########################## Market ########################## */	
 			 	$( ".Depth03:contains('입점 문의')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('입점 문의')" ) );
 			 		$(window.location).attr("href","/market/addMarket");
 				}); 
 			 	
 			 	$( ".Depth03:contains('입점 신청 조회')" ).on("click" , function() 
 			 	{
-					//Debug..
-					//alert(  $( ".Depth03:contains('입점 신청 조회')" ) );
 			 		$(window.location).attr("href","/market/listMarket");
 				}); 
 			 	/* ########################## Market ########################## */	

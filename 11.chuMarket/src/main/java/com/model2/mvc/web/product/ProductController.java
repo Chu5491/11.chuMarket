@@ -136,7 +136,7 @@ public class ProductController
 	}
 	
 	@RequestMapping("addProduct")
-	public ModelAndView addProduct(@ModelAttribute("prod") Product prod ,@SessionAttribute("user") User user, @RequestParam("file") MultipartFile upload,HttpServletRequest request) throws Exception 
+	public ModelAndView addProduct(@ModelAttribute("prod") Product prod ,@SessionAttribute("userInfo") User user, @RequestParam("file") MultipartFile upload,HttpServletRequest request) throws Exception 
 	{
 		System.out.println("/product/addProduct");
 		System.out.println(prod);

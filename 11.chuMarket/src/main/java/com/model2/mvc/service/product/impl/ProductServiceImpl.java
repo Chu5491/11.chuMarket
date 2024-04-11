@@ -84,6 +84,7 @@ public class ProductServiceImpl implements ProductService
 		for(Product value : list)
 		{
 			value.setMarket(marketDAO.getMarket(value.getMarket().getMarketNo()));
+			value.setUpload(uploadDAO.getUpload(value.getProdNo()));
 			System.out.println(value.getMarket().getMarketNo());
 
 			result.add(value);

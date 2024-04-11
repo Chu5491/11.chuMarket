@@ -74,7 +74,7 @@ public class PurchaseController
 	}
 	
 	@RequestMapping("listPurchase")
-	public ModelAndView listPurchase(@ModelAttribute("search") Search search, @SessionAttribute("user") User user) throws Exception 
+	public ModelAndView listPurchase(@ModelAttribute("search") Search search, @SessionAttribute("userInfo") User user) throws Exception 
 	{
 		System.out.println("/purchase/listPurchase");
 		

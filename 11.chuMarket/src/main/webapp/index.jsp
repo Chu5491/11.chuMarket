@@ -69,7 +69,7 @@
 				        
 				        if (flag == "prod") 
 				        {
-				            $(window.location).attr("href", "product/getProduct?prodNo=" + no + "&menu=search");
+				            $(window.location).attr("href", "/product/getProduct?prodNo=" + no + "&menu=search");
 				        }else 
 				        {
 				            $(window.location).attr("href", "/market/getMarket?marketNo=" + no + "&menu=search");

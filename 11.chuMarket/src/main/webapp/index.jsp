@@ -223,7 +223,6 @@
 						</td>
 					</tr>
 				</table>
-				
 				<div class="container is-max-desktop" >
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>

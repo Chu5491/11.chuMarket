@@ -58,7 +58,7 @@ public class ProductController
 	@Qualifier("uploadServiceImpl")
 	private UploadService uploadService;
 	//setter Method 구현 않음
-		
+
 	public ProductController()
 	{
 		System.out.println(this.getClass());
